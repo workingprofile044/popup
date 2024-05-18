@@ -1,4 +1,4 @@
-export function createPopup(name, description) {
+export function createPopup(name, description, button) {
     const existingPopup = document.querySelector('.popup');
     if (existingPopup) {
         existingPopup.remove();
@@ -10,12 +10,19 @@ export function createPopup(name, description) {
     
     document.body.appendChild(popup);
 
-    popup.style.position = 'fixed';
-    popup.style.top = '10%';
-    popup.style.left = '50%';
-    popup.style.transform = 'translateX(-50%)';
+    const buttonRect = button.getBoundingClientRect();
+    popup.style.position = 'absolute';
+    popup.style.top = `${buttonRect.top - popup.offsetHeight - 10}px`;
+    popup.style.left = `${buttonRect.left + (buttonRect.width / 2) - (popup.offsetWidth / 2)}px`;
     popup.style.backgroundColor = '#fff';
     popup.style.border = '1px solid #000';
     popup.style.padding = '20px';
     popup.style.zIndex = '1000';
+}
+
+export function removePopup() {
+    const existingPopup = document.querySelector('.popup');
+    if (existingPopup) {
+        existingPopup.remove();
+    }
 }
