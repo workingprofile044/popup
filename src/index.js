@@ -2,6 +2,8 @@ import './styles.css';
 import { createPopup } from './popup';
 
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('CSS Loaded'); 
+
     const button = document.createElement('button');
     button.innerText = 'Show Popup';
     button.style.position = 'absolute';
